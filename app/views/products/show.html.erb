@@ -1,4 +1,31 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <h1>Просмотр изделия</h1>
+    <hr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <%= image_tag('bread') %>
+          <div class="card-body">
+            <h4 class="card-text fw-bold"><%= @product.name %></h4>
+            <hr>
+            <p class="card-text"><%= @product.description %></p>
+            <p class="card-text"><strong>Цена:</strong> <%= @product.price %> руб</p>
+            <p class="card-text"><strong>Вес:</strong> <%= @product.weight %> кг</p>
+            <p class="card-text"><strong>Срок годности:</strong> <%= @product.expiration_days %> дня(ей)</p>
+            <p class="card-text"><strong>Состав:</strong> <%= @product.composition %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-dark">В корзину</button>
+                <% if current_user.admin? %>
+                  <%= link_to 'Изменить', edit_product_path(@product), class: 'btn btn-sm btn-outline-secondary' %>
+                <% end %>
+                <%= link_to 'Назад', products_path, class: 'btn btn-sm btn-outline-secondary' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

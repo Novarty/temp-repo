@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
@@ -21,7 +22,6 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    byebug
     @product = Product.new(product_params)
 
     respond_to do |format|
@@ -65,6 +65,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :description, :price)
+      params.require(:product).permit(:name, :description, :price, :weight, :expiration_days, :composition)
     end
 end

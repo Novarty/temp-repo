@@ -1,6 +1,17 @@
-<h1>Editing Product</h1>
+<div class="album py-5 bg-light">
+  <div class="container">
+    <h1>Редактирование изделия</h1>
+    <hr>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <div class="col">
+        <div class="card shadow-sm">
+          <%= image_tag('bread') %>
 
-<%= render 'form', product: @product %>
-
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+          <div class="card-body">
+            <%= render 'form', product: @product %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
