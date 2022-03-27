@@ -1,0 +1,53 @@
+
+
+<%# @order_items.each do |item| %>
+<!--    <h3><%#= item.product.name %></h3>-->
+<!--    <h5><%#= item.product.price %></h5>-->
+    <%#= form_for item, remote: true do |f| %>
+        <%#= f.hidden_field :product_id, :value => item.product.id %>
+        <%#= f.number_field :quantity, :value => item.quantity.to_i %>
+        <%#= f.submit "Обновить"%>
+        <%#= link_to "Удалить товар", order_item_path(item), method: :delete, remote: true %>
+    <%# end %>
+<!--    <h3>Цена: <%#= item.total %></h3>-->
+<%# end %>
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+      <h1>Корзина</h1>
+      <hr>
+      <br>
+      <% if @order_items.present? %>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mb-3">
+          <% @order_items.each do |item| %>
+            <div class="col">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h4><%= link_to item.product.name, product_path(item.product), class: 'fw-bold text-reset text-decoration-none' %></h4>
+                  <h5><%= item.product.price %> руб/шт.</h5>
+                  <div class="d-flex justify-content-between align-items-center mt-3 mb-3 btn-group">
+                    <%= form_for item, remote: true do |f| %>
+                      <%= f.hidden_field :product_id, :value => item.product.id %>
+                      <%= f.number_field :quantity, :value => item.quantity.to_i, class: 'form-control mb-3 mr-3' %>
+                      <%= f.submit "Обновить", class: 'btn btn-sm btn-warning' %>
+                      <%= link_to "Удалить товар", order_item_path(item), method: :delete, remote: true, class: 'btn btn-sm btn-outline-warning' %>
+                    <% end %>
+                  </div>
+                  <h5>Цена: <%= item.total %> руб.</h5>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <hr>
+        <h4 class="mb-3">Общая сумма заказа: <%= current_order.subtotal %> руб.</h4>
+        <%= link_to 'Оформить заказ', root_path, class: 'btn btn-lg btn-success' %>
+      <% else %>
+        <h4 class="mb-3">Ваша корзина пока что (ка)пуста ¯\_(ツ)_/¯</h4>
+        <%= link_to 'К изделиям', products_path, class: 'h5 text-decoration-none' %>
+      <% end %>
+    </div>
+  </div>
+

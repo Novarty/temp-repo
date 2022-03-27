@@ -11,10 +11,11 @@
   </head>
 
   <body class="bg-light">
-    <header>
+    <header class="mb-5">
       <nav class="navbar navbar-dark bg-dark">
         <div class="container">
           <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <%= render 'cards/card' %>
             <%= link_to 'Изделия', products_path, class: 'me-3 py-2 text-white text-decoration-none' %>
             <% if current_user && current_user.admin? %>
               <%= link_to 'Управление', admin_root_path, class: 'me-3 py-2 text-white text-decoration-none' %>
