@@ -17,7 +17,7 @@
                       <% if current_user.admin? %>
                         <%= link_to 'Изменить', edit_product_path(product), class: 'btn btn-sm btn-outline-secondary' %>
                       <% end %>
-                      <%= f.submit "Купиц", class: 'btn btn-sm btn-warning' %>
+                      <%= f.submit "Купить", class: 'btn btn-sm btn-warning' %>
                     </div>
                     <small class="text-muted">Цена: <%= product.price %> руб.</small>
                   <% end %>
