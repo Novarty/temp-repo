@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Новые пользователи" do
           ul do
             User.last(5).map do |user|
-              li link_to("#{user.first_name} #{user.last_name}", admin_user_path(user))
+              li link_to("#{user.email}", admin_user_path(user))
             end
           end
         end

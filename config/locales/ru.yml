@@ -1,5 +1,12 @@
 ru:
   active_admin:
+    resources:
+      order:
+        new_model: 'Создать заказ'
+        edit_model: 'Изменить детали заказа'
+        delete_model: 'Удалить заказ'
+    orders: "Заказы"
+    products: "Изделия"
     dashboard: "Панель управления"
     dashboard_welcome:
       welcome: "Добро пожаловать в Active Admin. Это стандартная страница управления сайтом."
