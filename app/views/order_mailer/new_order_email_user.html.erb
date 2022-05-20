@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+  </head>
+  <body>
+    <h3>Здравствуйте! Ваш заказ успешно сформирован.</h3>
+    <p>
+    Детали заказа<br>
+    --------------------------
+    </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Продукт</th>
+          <th>Кол-во</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.includes(:product).each do |item| %>
+          <tr>
+            <td><%= item.product.name %></td>
+            <td><%= item.quantity %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <p>Сумма заказа: <%= @order.subtotal %></p>
+    <% if @order.comment %>
+      <p>Комментарий: <%= @order.comment %></p>
+    <% end %>
+    <p>
+      Заказ будет готов на следующий день к 9:00. Если вы хотите отменить или изменить детали заказа, свяжитесь с менеджером
+      по контактному телефону +79876543210
+      или напишите нам на электронную почту hleb@gmail.com.
+
+      Если у нас появятся вопросы, мы перезвоним вам для уточнения информации.
+      Спасибо!
+    </p>
+  </body>
+</html>
