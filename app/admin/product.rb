@@ -28,7 +28,7 @@ ActiveAdmin.register Product do
       f.input :weight
       f.input :expiration_days
       f.input :composition
-      f.input :user_id
+      f.input :user_id, :input_html => { :value => current_user.id }, as: :hidden
     end
 
     f.actions

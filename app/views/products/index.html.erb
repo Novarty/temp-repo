@@ -3,10 +3,10 @@
       <h1>Каталог изделий</h1>
       <hr>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% @products.each do |product| %>
+        <% @products.each_with_index do |product, i| %>
           <div class="col">
             <div class="card shadow-sm">
-              <%= image_tag('bread') %>
+              <%= image_tag("bread#{i+1}") %>
               <div class="card-body">
                 <%= link_to product.name, product_path(product), class: 'h4 fw-bold text-reset text-decoration-none' %>
                 <div class="d-flex justify-content-between align-items-center mt-3">

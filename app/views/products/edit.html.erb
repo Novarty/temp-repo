@@ -5,7 +5,7 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <div class="col">
         <div class="card shadow-sm">
-          <%= image_tag('bread') %>
+          <%= image_tag("bread#{params[:id]}") %>
 
           <div class="card-body">
             <%= render 'form', product: @product %>
